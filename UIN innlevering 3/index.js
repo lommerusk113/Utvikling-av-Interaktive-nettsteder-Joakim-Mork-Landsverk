@@ -310,7 +310,7 @@ try {
 		// - Do NOT use Object.assign()
 		// - Do use object spread properties
 		// - Think about the order!
-		let result = { ...obj1, ...obj2, ...obj3 };
+		let result = { ...obj1, ...obj2, c:obj3.c };
 		
 
 		// Don't make changes below this line	
