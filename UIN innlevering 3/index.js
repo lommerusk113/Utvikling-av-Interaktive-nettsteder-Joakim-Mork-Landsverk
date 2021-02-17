@@ -57,10 +57,7 @@ try {
 	(function UseDefaultParameters() {
     
 		// Correct the syntax errors in the function.
-		function hello(who) {
-			if (who == undefined){
-				who = "World"
-			}
+		function hello(who = "World") {
 			return 'Hello ' + who + '!';
 		}
 
@@ -78,9 +75,8 @@ try {
 	(function UseRestParameter() {
 		// Add just one rest parameter and use the number of elements in this parameter 
 		// (What is the name of that property?) in the return statement to let the test pass.
-		function foo(a, b,...args) {
-			let c = args.length
-			return a + b + c;
+		function foo(a, b,...c) {
+			return a + b + c.length;
 		}
 
 		// Don't make changes below this line	
@@ -209,13 +205,9 @@ try {
 			age: 985,
 			add: (x, y) => x + y
 		}
-		
 		// Use object destructuring to change the 3 statements below into 1 statement.
-	
-		let [name, age, add] = [obj.name,obj.age, obj.add];
-
+		const {name, age, add} = obj;
 		// Don't make changes below this line	
-		
 		expect(name).toBe('Oslo');
 		expect(age).toBe(985);
 		expect(add(1, 2)).toBe(3);
@@ -265,11 +257,14 @@ try {
 
 
 	(function UsePropertyShorthand() {
+		const name = "Oslo";
+		const age = 985;
+		const norwegian = true;
 		// Remove all unnecesary syntax to let the test pass.
 		let city = {
-			name: "Oslo",
-			age: 985,
-			dutch: false
+			name,
+			age,
+			dutch: !norwegian
 		};
 
 		// Don't make changes below this line	
@@ -310,7 +305,7 @@ try {
 		// - Do NOT use Object.assign()
 		// - Do use object spread properties
 		// - Think about the order!
-		let result = { ...obj1, ...obj2, c:obj3.c };
+		let result = { ...obj1,...obj3,...obj2 };
 		
 
 		// Don't make changes below this line	
